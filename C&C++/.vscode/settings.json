@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "*.h": "c",
+        "random": "c",
+        "4.9.C": "cpp",
+        "stdlib.h": "c",
+        "2.5.C": "cpp"
+    }
+}
