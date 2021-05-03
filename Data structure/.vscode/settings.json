@@ -1,8 +1,12 @@
 {
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
+        "*.h": "c",
         "random": "c",
         "4.9.C": "cpp",
-        "cmath": "c"
+        "cmath": "c",
+        "*.tcc": "c",
+        "cstdlib": "c",
+        "memory": "c"
     }
 }

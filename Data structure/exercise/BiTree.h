@@ -1,4 +1,3 @@
-typedef char DataType;
 typedef struct Node 
 {
     DataType data;			//数据域
@@ -14,26 +13,35 @@ void Initiate(BiTreeNode **root)  //初始化建立二叉树的头结点
 BiTreeNode *InsertLeftNode(BiTreeNode *curr, DataType x)
 {
 	BiTreeNode *s, *t;
- 	if(curr == NULL) return NULL;
+	if(curr == NULL) return NULL;
 	t = curr->leftChild; 	//保存原curr所指结点的左子树指针
 	s = (BiTreeNode *)malloc(sizeof(BiTreeNode));
 	s->data = x;
 	s->leftChild = t;   	//新插入结点的左子树为原curr的左子树
 	s->rightChild = NULL;
- 	curr->leftChild = s;  	//新结点为curr的左子树
+	curr->leftChild = s;  	//新结点为curr的左子树
 	return curr->leftChild;	
 }
 BiTreeNode *InsertRightNode(BiTreeNode *curr, DataType x)
 {
 	BiTreeNode *s, *t;
- 	if(curr == NULL) return NULL;
+	if(curr == NULL) return NULL;
 	t = curr->rightChild;      	//保存原curr所指结点的右子树指针
 	s = (BiTreeNode *)malloc(sizeof(BiTreeNode));
 	s->data = x;
 	s->rightChild = t;   	//新插入结点的右子树为原curr的右子树
 	s->leftChild = NULL;
- 	curr->rightChild = s;  	//新结点为curr的右子树
+	curr->rightChild = s;  	//新结点为curr的右子树
 	return curr->rightChild;	
+}
+void Destroy(BiTreeNode **root)
+{
+	if((*root)!=NULL)
+	{
+		Destroy(&(*root)->leftChild);
+		Destroy(&(*root)->rightChild);
+	    free(*root);
+	}
 }
 BiTreeNode *DeleteLeftTree(BiTreeNode *curr)
 {
@@ -45,39 +53,79 @@ BiTreeNode *DeleteLeftTree(BiTreeNode *curr)
 BiTreeNode *DeleteRightTree(BiTreeNode *curr)
 {
 	if(curr == NULL || curr->rightChild == NULL) return NULL;
- 	Destroy(&curr->rightChild); //撤销操作
+	Destroy(&curr->rightChild); //撤销操作
 	curr->rightChild = NULL;
 	return curr;
 }
-void visit(DataType item)
+void Visit(DataType item)
 {
 	printf("%c ", item);
 }
-void PreOrder(BiTreeNode *root, void visit(DataType item))
- {
+void PreOrder(BiTreeNode *root, void Visit(DataType item))
+{
 	if(root!=NULL)
 	{
-		visit(root->data);
-		PreOrder(root->leftChild, visit);
-		PreOrder(root->rightChild, visit);
+		Visit(root->data);
+		PreOrder(root->leftChild, Visit);
+		PreOrder(root->rightChild, Visit);
 	}
 }
-void InOrder(BiTreeNode *root, void visit(DataType item))
+void InOrder(BiTreeNode *root, void Visit(DataType item))
 {
-	if(root != NULL)
+	if(root!=NULL)
 	{	
-        InOrder(root->leftChild, visit);
-		visit(root->data);
-		InOrder(root->rightChild, visit);
+        InOrder(root->leftChild, Visit);
+		Visit(root->data);
+		InOrder(root->rightChild, Visit);
 	}
 }
-void PostOrder(BiTreeNode *root, void visit(DataType item))
-/*后序遍历二叉树t */
+void PostOrder(BiTreeNode *root, void Visit(DataType item))
 {
-	if(root != NULL)
+	if(root!=NULL)
 	{	
-        PostOrder(root->leftChild, visit);
-		PostOrder(root->rightChild, visit);
+        PostOrder(root->leftChild, Visit);
+		PostOrder(root->rightChild, Visit);
 		Visit(root->data);
 	}
+}
+void PrintBiTree(BiTreeNode *root,int n)
+{
+	int i;
+	if(root==NULL) return;	
+	PrintBiTree(root->rightChild,n+1);
+	for(i=0;i<n-1;i++) printf("   ");
+	if(n>0)
+	{
+		printf("---");
+		printf("%c\n", root->data);
+	}
+	PrintBiTree(root->leftChild,n+1);
+}
+BiTreeNode *Search(BiTreeNode *root, DataType x)
+{	
+	BiTreeNode *find=NULL;
+	if(root!=NULL)
+	{
+		if(root->data==x) find=root;
+		else
+		{
+			find=Search(root->leftChild,x);
+			if(find==NULL) find=Search(root->rightChild,x);
+		}
+	}
+	return find;
+}
+void CreateBiTree(BiTreeNode **root,FILE *fp)
+{
+	DataType ch;
+	fscanf(fp,"%c",&ch);
+	if(ch=='^')
+	{
+		*root=NULL;
+		return;
+	}
+	*root=(BiTreeNode*)malloc(sizeof(BiTreeNode));
+	(*root)->data=ch;
+	CreateBiTree(&(*root)->leftChild,fp);
+	CreateBiTree(&(*root)->rightChild,fp);
 }
