@@ -55,6 +55,30 @@ void PreOrder(BiTreeNode *root,void Visit(ElemType item))
     }
 }
 
+//3.非递归方式中序遍历
+void InOrder(BiTreeNode *root,void Vist(ElemType item))
+{
+    BiTreeNode *p;
+    SeqStack stack;
+    StackInitiate(&stack); //堆栈初始化
+    p=root;
+    if(p==NULL) printf("二叉树为空！\n");
+    while(p || StackNotEmpty(stack)) //堆栈为空时结束循环
+    {
+        if(p)
+        {                      
+            StackPush(&stack,p); //结点入栈
+            p=p->leftChild; //指向左子树
+        }
+        else //左子树为空后
+        {
+            StackPop(&stack,&p); //退栈
+            Visit(p->data); //访问结点。
+            p=p->rightChild; //指向右子树
+        }
+    }
+}
+
 //4.后序遍历
 void PostOrder(BiTreeNode *root,void Visit(ElemType item))
 {
@@ -89,7 +113,7 @@ void LevelOrder(BiTreeNode *root,void Visit(ElemType item))
     }
 }
 
-//6.输出树T的深度
+//6.计算树T的深度
 int TreeDepth(BiTreeNode *root)
 {
     int leftDepth=-1;  //深度初始化为-1

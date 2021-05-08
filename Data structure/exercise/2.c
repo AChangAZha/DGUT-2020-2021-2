@@ -10,12 +10,13 @@ int main()
 {
     BiTreeNode *T;
     FILE *fp;
-    char BT[]="ABCDEFGHIJKLMN";
+    char BT[]="ABCD^EFGH^^I^JK";
     int depth;
     
     //1.通过文件读取创建
-    // fp=fopen("d:\\1.txt","r");
+    // fp=fopen("BiTree.txt","r");
     // CreateBiTree(&T,fp);
+    // fclose(fp);
 
     //选做2.通过BT[n]创建
     CreateBiTree2(&T,BT,0);
@@ -23,6 +24,11 @@ int main()
     //2.非递归方式先序遍历
     printf("先序遍历：");
     PreOrder(T,Visit);
+    printf("\n");
+
+    //3.非递归方式中序遍历
+    printf("中序遍历：");
+    InOrder(T,Visit);
     printf("\n");
 
     //4.后序遍历
@@ -54,4 +60,5 @@ int main()
 
     //撤销二叉树
     Destroy(&T);
+    system("pause");
 }
