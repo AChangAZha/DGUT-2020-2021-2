@@ -17,7 +17,7 @@ int main()
     void Destroy(staff **list);
     do{
         printf("请输入第%d个员工的姓名和基本工资(基本工资为0时结束输入)：",i);
-        scanf("%s%lf",&name,&salary);
+        scanf("%s%lf",name,&salary);
         if(salary==0) break;
         if((p1=(staff *)malloc(sizeof(staff)))==NULL)
         {

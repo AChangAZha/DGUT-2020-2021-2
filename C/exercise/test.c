@@ -3,5 +3,5 @@
 int main()
 {
     char str[]="你好";
-    printf("%d",strlen(str));
+    printf("%Iu",strlen(str));
 }
