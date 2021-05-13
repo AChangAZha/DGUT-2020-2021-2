@@ -6,16 +6,17 @@ typedef int DataType;
 void main()
 {
     LSNode *head;
-    int i,x;
+    int i, x;
     StackInitiate(&head);
-    for(i=0;i<10;i++) StackPush(head,i+1);
-    StackTop(head,&x);
-    printf("当前栈顶数据元素为：%d\n",x);
+    for (i = 0; i < 10; i++)
+        StackPush(head, i + 1);
+    StackTop(head, &x);
+    printf("当前栈顶数据元素为：%d\n", x);
     printf("依次出栈的数据元素序列如下：\n");
-    while(StackNotEmpty(head))
+    while (StackNotEmpty(head))
     {
-        StackPop(head,&x);
-        printf("%d ",x);
+        StackPop(head, &x);
+        printf("%d ", x);
     }
     Destroy(head);
 }

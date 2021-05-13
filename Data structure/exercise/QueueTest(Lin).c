@@ -7,32 +7,32 @@ void main()
 {
     LQueue Q;
     LQNode *p;
-    int i,x;
+    int i, x;
     QueueInitiate(&Q);
-    for(i=0;i<10;i++)
+    for (i = 0; i < 10; i++)
     {
-        QueueAppend(&Q,i+1);
-        p=Q.head->next;
-        while(p!=Q.head)
+        QueueAppend(&Q, i + 1);
+        p = Q.head->next;
+        while (p != Q.head)
         {
-            printf("%d ",p->data);
-            p=p->next;
+            printf("%d ", p->data);
+            p = p->next;
         }
         printf("\n");
     }
-    for(i=0;i<10;i++)
+    for (i = 0; i < 10; i++)
     {
-        QueueDelete(&Q,&x);
-        p=Q.head->next;
-        while(p!=Q.head)
+        QueueDelete(&Q, &x);
+        p = Q.head->next;
+        while (p != Q.head)
         {
-            printf("%d ",p->data);
-            p=p->next;
+            printf("%d ", p->data);
+            p = p->next;
         }
         printf("\n");
     }
-    QueueGet(Q,&x);
-    printf("当前队头数据元素为：%d\n",x);
+    QueueGet(Q, &x);
+    printf("当前队头数据元素为：%d\n", x);
     printf("依次出队列的数据元素序列如下：\n");
     /* while(QueueNotEmpty(Q))
     {

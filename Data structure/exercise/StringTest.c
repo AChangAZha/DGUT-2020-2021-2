@@ -5,11 +5,11 @@
 #include "DString.h"
 void main()
 {
-    DString S1,S2;
-    int max1=10,max2=10;
-    Initiate(&S1,max1,"latau");
-    Initiate(&S2,max1,"latau");
-    Compare(S1,S2);
+    DString S1, S2;
+    int max1 = 10, max2 = 10;
+    Initiate(&S1, max1, "latau");
+    Initiate(&S2, max1, "latau");
+    Compare(S1, S2);
     Destroy(&S1);
     Destroy(&S2);
     // DString myString1,myString2,myString3;

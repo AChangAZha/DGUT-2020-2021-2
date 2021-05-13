@@ -7,16 +7,16 @@ typedef int DataType;
 void main()
 {
     SeqList myList;
-    int i,x;
+    int i, x;
     ListInitiate(&myList);
-    for(i=0;i<10;i++)
+    for (i = 0; i < 10; i++)
     {
-        f(&myList,99-i);
+        f(&myList, 99 - i);
     }
-    ListDelete(&myList,10,&x);
-    for(i=0;i<ListLength(myList);i++)
+    ListDelete(&myList, 10, &x);
+    for (i = 0; i < ListLength(myList); i++)
     {
-        ListGet(myList,i,&x);
-        printf("%d \n",x);
+        ListGet(myList, i, &x);
+        printf("%d \n", x);
     }
 }

@@ -3,96 +3,96 @@ typedef struct Node
 {
     DataType data;
     struct Node *next;
-}SLNode;
+} SLNode;
 void ListInitiate(SLNode **head)
 {
-    *head=(SLNode *)malloc(sizeof(SLNode));
-    (*head)->next=*head;
+    *head = (SLNode *)malloc(sizeof(SLNode));
+    (*head)->next = *head;
 }
 int ListLength(SLNode *head)
 {
-    SLNode *p=head;
-    int size=0;
-    while (p->next!=head)
+    SLNode *p = head;
+    int size = 0;
+    while (p->next != head)
     {
-        p=p->next;
+        p = p->next;
         size++;
     }
     return size;
 }
-int ListInsert(SLNode *head,int i,DataType x)
+int ListInsert(SLNode *head, int i, DataType x)
 {
-    SLNode *p,*q;
+    SLNode *p, *q;
     int j;
-    p=head;
-    j=-1;
-    while (p->next!=head && j<i-1)
+    p = head;
+    j = -1;
+    while (p->next != head && j < i - 1)
     {
-        p=p->next;
+        p = p->next;
         j++;
     }
-    if(j!=i-1)
+    if (j != i - 1)
     {
         printf("插入位置元素参数错！");
         return 0;
     }
-    q=(SLNode *)malloc(sizeof(SLNode));
-    q->data=x;
-    q->next=p->next;
-    p->next=q;
+    q = (SLNode *)malloc(sizeof(SLNode));
+    q->data = x;
+    q->next = p->next;
+    p->next = q;
     return 1;
 }
-int ListDelete(SLNode *head,int i,DataType *x)
+int ListDelete(SLNode *head, int i, DataType *x)
 {
-    SLNode *p,*s;
+    SLNode *p, *s;
     int j;
-    p=head;
-    j=-1;
-    while (p->next!=head && p->next->next!=head && j<i-1)
+    p = head;
+    j = -1;
+    while (p->next != head && p->next->next != head && j < i - 1)
     {
-        p=p->next;
+        p = p->next;
         j++;
     }
-    if(j!=i-1)
+    if (j != i - 1)
     {
         printf("删除元素位置参数错！");
         return 0;
     }
-    s=p->next;
-    *x=s->data;
-    p->next=p->next->next;
+    s = p->next;
+    *x = s->data;
+    p->next = p->next->next;
     free(s);
     return 1;
 }
-int ListGet(SLNode *head,int i,DataType *x)
+int ListGet(SLNode *head, int i, DataType *x)
 {
     SLNode *p;
     int j;
-    p=head;
-    j=-1;
-    while (p->next!=head && j<i)
+    p = head;
+    j = -1;
+    while (p->next != head && j < i)
     {
-        p=p->next;
+        p = p->next;
         j++;
     }
-    if(j!=i)
+    if (j != i)
     {
         printf("取元素位置错！");
         return 0;
     }
-    *x=p->data;
+    *x = p->data;
     return 1;
 }
 int Destroy(SLNode **head)
 {
-    SLNode *p,*p1;
-    p=(*head)->next;
-    while (p!=*head)
+    SLNode *p, *p1;
+    p = (*head)->next;
+    while (p != *head)
     {
-        p1=p;
-        p=p->next;
+        p1 = p;
+        p = p->next;
         free(p1);
     }
     free(p);
-    *head=NULL;
+    *head = NULL;
 }

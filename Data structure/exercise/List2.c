@@ -4,19 +4,19 @@
 typedef int DataType;
 
 #include "LinList.h"
-void Lin(SLNode *head)/* 单链表 */
-{  
-    SLNode *p,*q,*j;  
-    p=head->next;  
-    head->next=NULL;  
-    while(p!=NULL)  
-    {  
-        /*向后挪动一个位置*/  
-        q=p;  
-        p=p->next;            
-        /*头插*/  
-        q->next=head->next;  
-        head->next=q;  
+void Lin(SLNode *head) /* 单链表 */
+{
+    SLNode *p, *q, *j;
+    p = head->next;
+    head->next = NULL;
+    while (p != NULL)
+    {
+        /*向后挪动一个位置*/
+        q = p;
+        p = p->next;
+        /*头插*/
+        q->next = head->next;
+        head->next = q;
         /* j=head->next;
         while(j!=NULL)
         {
@@ -24,16 +24,16 @@ void Lin(SLNode *head)/* 单链表 */
             j=j->next;
         }
         printf("\n"); */
-    }  
+    }
 }
 void main()
 {
-    SLNode *L1,*p;
-    int i,x;
+    SLNode *L1, *p;
+    int i, x;
     ListInitiate(&L1);
-    for(i=0;i<5;i++)
+    for (i = 0; i < 5; i++)
     {
-        ListInsert(L1,i,i*2);
+        ListInsert(L1, i, i * 2);
         /* p=L1->next;
         while(p!=NULL)
         {
@@ -42,17 +42,17 @@ void main()
         }
         printf("\n"); */
     }
-    for(i=0;i<ListLength(L1);i++)
+    for (i = 0; i < ListLength(L1); i++)
     {
-        ListGet(L1,i,&x);
-        printf("%d ",x);
+        ListGet(L1, i, &x);
+        printf("%d ", x);
     }
     printf("\n");
     Lin(L1);
-    for(i=0;i<ListLength(L1);i++)
+    for (i = 0; i < ListLength(L1); i++)
     {
-        ListGet(L1,i,&x);
-        printf("%d ",x);
+        ListGet(L1, i, &x);
+        printf("%d ", x);
     }
     printf("\n");
     Destroy(&L1);
@@ -89,14 +89,14 @@ void main()
 //         {
 //             ListGet(mylist,j,&x);
 //             printf("%d ",x);
-//         } 
+//         }
 //         printf("\n"); */
 //     }
 //     for(j=0;j<ListLength(mylist);j++)
 //     {
 //         ListGet(mylist,j,&x);
 //         printf("%d ",x);
-//     } 
+//     }
 //     printf("\n");
 //     Seq(&mylist);
 //     for(i=0;i<ListLength(mylist);i++)
