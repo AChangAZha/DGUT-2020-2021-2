@@ -41,7 +41,8 @@ int main()
     a.list[5].j = 4;
     a.list[5].d = 8;
     b.list[0].i = 1;
-    b.list[0].j = 1, b.list[0].d = 1;
+    b.list[0].j = 1;
+    b.list[0].d = 1;
     b.list[1].i = 1;
     b.list[1].j = 6;
     b.list[1].d = 3;
