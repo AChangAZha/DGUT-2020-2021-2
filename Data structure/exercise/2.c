@@ -10,8 +10,7 @@ int main()
 {
     BiTreeNode *T;
     FILE *fp;
-    char BT[] = "ABCD^EFGH^^I^JK";
-    int depth;
+    char BT[] = "ABCDEFGHIJKLMNO";
 
     //1.通过文件读取创建
     // fp=fopen("BiTree.txt","r");
@@ -48,6 +47,7 @@ int main()
     printf("树T的叶子结点：");
     PrintLeaf(T);
     printf("\n");
+    printf("叶子结点个数：%d %d\n", leaf(T), leaf_2(T));
 
     //6.输出树T的非叶子结点
     printf("树T的非叶子结点：");

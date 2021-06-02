@@ -1,7 +1,7 @@
 /* 线性表：顺序表 */
 typedef struct
 {
-    DataType list[MaxSize];
+    ElemType list[MaxSize];
     int size;
 } SeqList;
 void ListInitiate(SeqList *L)
@@ -12,7 +12,7 @@ int ListLength(SeqList L)
 {
     return L.size;
 }
-int ListInsert(SeqList *L, int i, DataType x)
+int ListInsert(SeqList *L, int i, ElemType x)
 {
     int j;
     if (L->size >= MaxSize)
@@ -36,7 +36,7 @@ int ListInsert(SeqList *L, int i, DataType x)
         return 1;
     }
 }
-int ListDelete(SeqList *L, int i, DataType *x)
+int ListDelete(SeqList *L, int i, ElemType *x)
 {
     int j;
     if (L->size <= 0)
@@ -60,7 +60,7 @@ int ListDelete(SeqList *L, int i, DataType *x)
         return 1;
     }
 }
-int ListGet(SeqList L, int i, DataType *x)
+int ListGet(SeqList L, int i, ElemType *x)
 {
     if (i < 0 || i > L.size - 1)
     {
@@ -73,7 +73,7 @@ int ListGet(SeqList L, int i, DataType *x)
         return 1;
     }
 }
-int ListFind(SeqList L, DataType x) /* 定位 */
+int ListFind(SeqList L, ElemType x) /* 定位 */
 {
     int i;
     for (i = 0; i < L.size; i++)
@@ -85,7 +85,7 @@ int ListFind(SeqList L, DataType x) /* 定位 */
     }
     return -1;
 }
-int f(SeqList *L, DataType x) /* 插入并保持升序 */
+int f(SeqList *L, ElemType x) /* 插入并保持升序 */
 {
     int i, j;
     if (L->size >= MaxSize)

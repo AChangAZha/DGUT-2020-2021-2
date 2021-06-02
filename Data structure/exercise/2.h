@@ -224,3 +224,39 @@ void Destroy(BiTreeNode **root)
         free(*root);
     }
 }
+
+int leaf(BiTreeNode *T)
+{
+    if (T == NULL)
+        return 0;
+    else if (T->leftChild == NULL && T->rightChild == NULL)
+        return 1;
+    else
+        return leaf(T->leftChild) + leaf(T->rightChild);
+}
+
+int leaf_2(BiTreeNode *T)
+{
+    int leaf = 0;
+    BiTreeNode *p;
+    SeqStack stack;
+    StackInitiate(&stack); //堆栈初始化
+    p = T;
+    if (p == NULL)
+        printf("二叉树为空！\n");
+    else
+    {
+        StackPush(&stack, p); //根结点入栈
+        do
+        {
+            StackPop(&stack, &p); //结点出栈
+            if (p->leftChild == NULL && p->rightChild == NULL)
+                leaf++;
+            if (p->rightChild != NULL)
+                StackPush(&stack, p->rightChild); //当前结点的右孩子入栈
+            if (p->leftChild != NULL)
+                StackPush(&stack, p->leftChild); //当前结点的左孩子入栈
+        } while (StackNotEmpty(stack));          //当堆栈为空时结束循环
+    }
+    return leaf;
+}
