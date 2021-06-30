@@ -260,3 +260,15 @@ int leaf_2(BiTreeNode *T)
     }
     return leaf;
 }
+
+void count(BiTreeNode *root, int a[])
+{
+    if (root == NULL)
+        return;
+    if (root->leftChild == NULL && root->rightChild == NULL)
+        a[0]++;
+    else
+        a[1]++;
+    count(root->leftChild, a);
+    count(root->rightChild, a);
+}

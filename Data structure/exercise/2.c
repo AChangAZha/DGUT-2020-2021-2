@@ -8,6 +8,7 @@ typedef char ElemType;
 
 int main()
 {
+    int a[2] = {0};
     BiTreeNode *T;
     FILE *fp;
     char BT[] = "ABCDEFGHIJKLMNO";
@@ -53,7 +54,8 @@ int main()
     printf("树T的非叶子结点：");
     PrintNotLeaf(T);
     printf("\n");
-
+    count(T, a);
+    printf("%d %d", a[0], a[1]);
     //选做1.判断该二叉树是否为完全二叉树
     if (ComBiTree(T))
         printf("该二叉树是完全二叉树\n");

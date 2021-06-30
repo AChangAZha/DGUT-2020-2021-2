@@ -83,7 +83,7 @@ int ListGet(SLNode *head, int i, DataType *x)
     *x = p->data;
     return 1;
 }
-int Destroy(SLNode **head)
+void Destroy(SLNode **head)
 {
     SLNode *p, *p1;
     p = *head;
@@ -130,4 +130,20 @@ void LinListInsert(SLNode *head, DataType x) /* 插入并保持升序 */
     q->data = x;
     q->next = pre->next;
     pre->next = q;
+}
+void InsertSort(SLNode *head)
+{
+    SLNode *p, *pre, *q;
+    p = head->next->next;    
+    head->next->next = NULL; 
+    while (p != NULL)
+    {
+        q = p->next;
+        pre = head;                                               
+        while (pre->next != NULL && pre->next->data < p->data) 
+            pre = pre->next;
+        p->next = pre->next;
+        pre->next = p;
+        p = q;
+    }
 }

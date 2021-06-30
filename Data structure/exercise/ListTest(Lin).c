@@ -4,21 +4,21 @@
 #include <stdlib.h>
 typedef int DataType;
 #include "Linlist.h"
-void main()
+int main()
 {
     SLNode *head, *p;
-    int i, x;
+    int i;
     ListInitiate(&head);
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < 1000; i++)
     {
-        int a = rand();
-        LinListInsert(head, i);
+        int a = rand()%10001;
+        ListInsert(head, i,a);
     }
-    ListDelete(head, 10, &x);
+    InsertSort(head);
     p = head->next;
     for (i = 0; i < ListLength(head); i++)
     {
-        printf("%d ", p->data);
+        printf("%-5d", p->data);
         p = p->next;
     }
     Destroy(&head);
