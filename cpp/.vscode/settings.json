@@ -5,6 +5,13 @@
         "iostream": "cpp",
         "vector": "cpp",
         "istream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "cmath": "cpp",
+        "xlocnum": "cpp",
+        "utility": "cpp",
+        "xloctime": "cpp",
+        "ostream": "cpp",
+        "xstring": "cpp",
+        "map": "cpp"
     }
 }
